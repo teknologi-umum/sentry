@@ -66,7 +66,7 @@ SENTRY_USE_BIG_INTS = True
 
 # Instruct Sentry that this install intends to be run by a single organization
 # and thus various UI optimizations should be enabled.
-SENTRY_SINGLE_ORGANIZATION = True
+SENTRY_SINGLE_ORGANIZATION = False
 
 SENTRY_OPTIONS["system.event-retention-days"] = int(
     env("SENTRY_EVENT_RETENTION_DAYS", "90")
@@ -240,11 +240,11 @@ SENTRY_WEB_OPTIONS = {
 # If you're using a reverse SSL proxy, you should enable the X-Forwarded-Proto
 # header and enable the settings below
 
-# SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-# USE_X_FORWARDED_HOST = True
-# SESSION_COOKIE_SECURE = True
-# CSRF_COOKIE_SECURE = True
-# SOCIAL_AUTH_REDIRECT_IS_HTTPS = True
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+USE_X_FORWARDED_HOST = True
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
+SOCIAL_AUTH_REDIRECT_IS_HTTPS = True
 
 # End of SSL/TLS settings
 
@@ -292,8 +292,6 @@ SENTRY_FEATURES.update(
             "projects:plugins",
             "projects:rate-limits",
             "projects:servicehooks",
-        )
-        + (
             "projects:span-metrics-extraction",
             "organizations:starfish-browser-resource-module-image-view",
             "organizations:starfish-browser-resource-module-ui",
@@ -308,7 +306,37 @@ SENTRY_FEATURES.update(
             "organizations:mobile-ttid-ttfd-contribution",
             "organizations:starfish-mobile-appstart",
             "organizations:standalone-span-ingestion",
-        )  # starfish related flags
+            # Start custom flags here!
+            # DDM
+            "organizations:ddm-ui",
+            "organizations:custom-metrics",
+            "organizations:ddm-experimental",
+            "organizations:metric-meta",
+            "organizations:use-metrics-layer-in-alerts",
+            # User Feedback
+            "organizations:user-feedback-ui",
+            "organizations:user-feedback-ingest",
+            "organizations:issue-platform",
+            "organizations:feedback-ingest",
+            "organizations:feedback-post-process-group",
+            "organizations:feedback-visible",
+            # Real custom flags
+            "organizations:create",
+            "organizations:device-classification",
+            "organizations:grouping-tree-ui",
+            "organizations:streamline-targeting-context",
+            "organizations:performance-new-widget-designs",
+            "organizations:performance-new-trends",
+            "organizations:grouping-stacktrace-ui",
+            "organizations:performance-metrics-backed-transaction-summary",
+            "organizations:performance-span-histogram-view",
+            "organizations:session-replay-event-linking",
+            "organizations:session-replay-viewed-by-ui",
+            "organizations:session-replay-enable-canvas",
+            "organizations:session-replay-enable-canvas",
+            "organizations:performance-transaction-summary-cleanup",
+            "organizations:spans-first-ui",
+        )
     }
 )
 
@@ -359,4 +387,4 @@ CSP_REPORT_ONLY = True
 # this to match your IPs/domains. Ports should be included if you are using custom ports.
 # https://docs.djangoproject.com/en/4.2/ref/settings/#std-setting-CSRF_TRUSTED_ORIGINS
 
-# CSRF_TRUSTED_ORIGINS = ["https://example.com", "http://127.0.0.1:9000"]
+CSRF_TRUSTED_ORIGINS = ["https://sentry.teknologiumum.com", "http://127.0.0.1:9000"]

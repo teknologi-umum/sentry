@@ -12,12 +12,15 @@ while [ true ]; do
   sleep 30s
 done
 
-# XXX(BYK): We cannot use auto.create.topics as Confluence and Apache hates it now (and makes it very hard to enable)
-EXISTING_KAFKA_TOPICS=$($dc exec -T kafka kafka-topics --list --bootstrap-server kafka:9092 2>/dev/null)
+$dc exec kafka rpk cluster config set log_retention_ms 86400000
+$dc exec kafka rpk cluster config set kafka_batch_max_bytes 52428800
+
+EXISTING_KAFKA_TOPICS=$($dc exec kafka rpk -X brokers=kafka:9092 topic list)
+
 NEEDED_KAFKA_TOPICS="ingest-attachments ingest-transactions ingest-events ingest-replay-recordings profiles ingest-occurrences ingest-metrics ingest-performance-metrics ingest-monitors"
 for topic in $NEEDED_KAFKA_TOPICS; do
   if ! echo "$EXISTING_KAFKA_TOPICS" | grep -qE "(^| )$topic( |$)"; then
-    $dc exec kafka kafka-topics --create --topic $topic --bootstrap-server kafka:9092
+    $dc exec kafka rpk -X brokers=kafka:9092 topic create $topic
     echo ""
   fi
 done

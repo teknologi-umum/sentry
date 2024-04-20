@@ -30,7 +30,7 @@ mail.host: 'smtp'
 # mail.list-namespace: 'localhost'
 
 # If you'd like to configure email replies, enable this.
-# mail.enable-replies: true
+mail.enable-replies: false
 
 # When email-replies are enabled, this value is used in the Reply-To header
 # mail.reply-hostname: ''
@@ -66,20 +66,26 @@ system.secret-key: '!!changeme!!'
 # Uploaded media uses these `filestore` settings. The available
 # backends are either `filesystem` or `s3`.
 
-filestore.backend: 'filesystem'
-filestore.options:
-  location: '/data/files'
+# filestore.backend: 'filesystem'
+# filestore.options:
+#   location: '/data/files'
 dsym.cache-path: '/data/dsym-cache'
 releasefile.cache-path: '/data/releasefile-cache'
 
-# filestore.backend: 's3'
-# filestore.options:
-#   access_key: 'AKIXXXXXX'
-#   secret_key: 'XXXXXXX'
-#   bucket_name: 's3-bucket-name'
+filestore.backend: 's3'
+filestore.options:
+  bucket_acl: 'private'
+  default_acl: 'private'
+  access_key: '<REDACTED>'
+  secret_key: '<REDACTED>'
+  bucket_name: '<REDACTED>'
+  region_name: 'auto'
+  endpoint_url: 'https://<REDACTED>'
+  addressing_style: 'path'
+  signature_version: 's3v4'
 
 # The URL prefix in which Sentry is accessible
-# system.url-prefix: https://example.sentry.com
+system.url-prefix: https://sentry.teknologiumum.com
 system.internal-url-prefix: 'http://web:9000'
 symbolicator.enabled: true
 symbolicator.options:
