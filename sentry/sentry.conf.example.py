@@ -336,6 +336,8 @@ SENTRY_FEATURES.update(
             "organizations:session-replay-enable-canvas",
             "organizations:performance-transaction-summary-cleanup",
             "organizations:spans-first-ui",
+            "organizations:performance-http-view",
+            "organizations:performance-vitals-inp",
         )
     }
 )
