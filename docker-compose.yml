@@ -75,6 +75,7 @@ x-sentry-defaults: &sentry_defaults
     SENTRY_MAIL_HOST:
     SENTRY_MAX_EXTERNAL_SOURCEMAP_SIZE:
     OPENAI_API_KEY:
+    SENTRY_DSN: ${SENTRY_SENTRY_DSN}
   volumes:
     - "sentry-data:/data"
     - "./sentry:/etc/sentry"
@@ -100,6 +101,7 @@ x-snuba-defaults: &snuba_defaults
     # Leaving the value empty to just pass whatever is set
     # on the host system (or in the .env file)
     SENTRY_EVENT_RETENTION_DAYS:
+    SENTRY_DSN: ${SNUBA_SENTRY_DSN}
 services:
   smtp:
     <<: *restart_policy
@@ -420,6 +422,8 @@ services:
         <<: *depends_on-healthy
       web:
         <<: *depends_on-healthy
+    environment:
+      SENTRY_DSN: ${RELAY_SENTRY_DSN}
   vroom:
     <<: *restart_policy
     image: "$VROOM_IMAGE"
@@ -428,6 +432,12 @@ services:
       SENTRY_KAFKA_BROKERS_OCCURRENCES: "kafka:9092"
       SENTRY_BUCKET_PROFILES:
       SENTRY_SNUBA_HOST: "http://snuba-api:1218"
+      SENTRY_DSN: ${VROOM_SENTRY_DSN}
+      AWS_SECRET_KEY: ${VROOM_S3_SECRET_KEY}
+      AWS_ACCESS_KEY: ${VROOM_S3_ACCESS_KEY}
+      AWS_SECRET_ACCESS_KEY: ${VROOM_S3_SECRET_KEY}
+      AWS_ACCESS_KEY_ID: ${VROOM_S3_ACCESS_KEY}
+
     volumes:
       - sentry-vroom:/var/lib/sentry-profiles
     depends_on:
