@@ -1,5 +1,31 @@
 # Changelog
 
+## 24.5.0
+
+### Various fixes & improvements
+
+- fix: Make docker volume script respect compose project name (#3039) by @hubertdeng123
+- remove ref to skip writes (#3041) by @john-z-yang
+- Add clickhouse healthchecks to upgrade (#3024) by @hubertdeng123
+- Upgrade clickhouse to 23.8 (#3009) by @hubertdeng123
+- fix: use nginx realip module (#2977) by @oioki
+- Add upgrade test (#3012) by @hubertdeng123
+- Bump kafka and zookeeper versions (#2988) by @hubertdeng123
+
+## 24.4.2
+
+### Various fixes & improvements
+
+- Edit test file name (#3002) by @hubertdeng123
+- Revert "Sampling: Run e2e tests every 5 minutes" (#2999) by @hubertdeng123
+- Fix master test failures (#3000) by @hubertdeng123
+- Sampling: Run e2e tests every 5 minutes (#2994) by @hubertdeng123
+- Tweak e2e test github action (#2987) by @hubertdeng123
+- fix(performance): Add spans-first-ui flag to enable starfish/performance module views in ui (#2993) by @edwardgou-sentry
+- Bump docker compose version in CI (#2980) by @hubertdeng123
+- Upgrade postgres to 14.11 (#2975) by @mdtro
+- Add workstation configuration (#2968) by @azaslavsky
+
 ## 24.4.1
 
 ### Various fixes & improvements

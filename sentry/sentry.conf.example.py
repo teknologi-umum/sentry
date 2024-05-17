@@ -306,6 +306,7 @@ SENTRY_FEATURES.update(
             "organizations:mobile-ttid-ttfd-contribution",
             "organizations:starfish-mobile-appstart",
             "organizations:standalone-span-ingestion",
+            "organizations:spans-first-ui",
             # Start custom flags here!
             # DDM
             "organizations:ddm-ui",
@@ -333,11 +334,8 @@ SENTRY_FEATURES.update(
             "organizations:session-replay-event-linking",
             "organizations:session-replay-viewed-by-ui",
             "organizations:session-replay-enable-canvas",
-            "organizations:session-replay-enable-canvas",
             "organizations:performance-transaction-summary-cleanup",
-            "organizations:spans-first-ui",
             "organizations:performance-http-view",
-            "organizations:performance-vitals-inp",
         )
     }
 )
