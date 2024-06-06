@@ -338,6 +338,12 @@ SENTRY_FEATURES.update(
             "organizations:session-replay-enable-canvas",
             "organizations:performance-transaction-summary-cleanup",
             "organizations:performance-http-view",
+            # Show links and upsells to Insights modules
+            "organizations:insights-entry-points": False,
+            # Enable access to initial Insights modules (Queries, Requests, Vitals, App Starts, Page Loads, Resources)
+            "organizations:insights-initial-modules": False,
+            # Enable access to newer Insights modules (Caches, Queues, LLMs, Mobile UI)
+            "organizations:insights-addon-modules": False,
         )
     }
 )

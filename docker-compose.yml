@@ -469,14 +469,14 @@ services:
     <<: *snuba_defaults
     command: rust-consumer --storage generic_metrics_gauges_raw --consumer-group snuba-gen-metrics-gauges-consumers --auto-offset-reset=latest --max-batch-time-ms 750 --no-strict-offset-reset
 
-+  sentry-loader:
-+    <<: *restart_policy
-+    image: ghcr.io/aldy505/sentry-loader:edge
-+    environment:
-+      SENTRY_AUTH_TOKEN: "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"
-+      JS_SDK_VERSION: "8.4.0"
-+      SENTRY_PUBLIC_HOSTNAME: "sentry.teknologiumum.com"
-+      USE_HTTPS: "true"
+  sentry-loader:
+    <<: *restart_policy
+    image: ghcr.io/aldy505/sentry-loader:edge
+    environment:
+      SENTRY_AUTH_TOKEN:
+      JS_SDK_VERSION: "8.4.0"
+      SENTRY_PUBLIC_HOSTNAME: "sentry.teknologiumum.com"
+      USE_HTTPS: "true"
 
 
 volumes:
