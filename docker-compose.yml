@@ -355,19 +355,25 @@ services:
     command: run consumer ingest-occurrences --consumer-group ingest-occurrences
   ingest-profiles:
     <<: *sentry_defaults
-    command: run consumer --no-strict-offset-reset ingest-profiles --consumer-group ingest-profiles
+    command: run consumer ingest-profiles --consumer-group ingest-profiles
   ingest-monitors:
     <<: *sentry_defaults
-    command: run consumer --no-strict-offset-reset ingest-monitors --consumer-group ingest-monitors
+    command: run consumer ingest-monitors --consumer-group ingest-monitors
+  monitors-clock-tick:
+    <<: *sentry_defaults
+    command: run consumer monitors-clock-tick --consumer-group monitors-clock-tick
+  monitors-clock-tasks:
+    <<: *sentry_defaults
+    command: run consumer monitors-clock-tasks --consumer-group monitors-clock-tasks
   post-process-forwarder-errors:
     <<: *sentry_defaults
-    command: run consumer post-process-forwarder-errors --consumer-group post-process-forwarder --synchronize-commit-log-topic=snuba-commit-log --synchronize-commit-group=snuba-consumers
+    command: run consumer --no-strict-offset-reset post-process-forwarder-errors --consumer-group post-process-forwarder --synchronize-commit-log-topic=snuba-commit-log --synchronize-commit-group=snuba-consumers
   post-process-forwarder-transactions:
     <<: *sentry_defaults
-    command: run consumer post-process-forwarder-transactions --consumer-group post-process-forwarder --synchronize-commit-log-topic=snuba-transactions-commit-log --synchronize-commit-group transactions_group
+    command: run consumer --no-strict-offset-reset post-process-forwarder-transactions --consumer-group post-process-forwarder --synchronize-commit-log-topic=snuba-transactions-commit-log --synchronize-commit-group transactions_group
   post-process-forwarder-issue-platform:
     <<: *sentry_defaults
-    command: run consumer post-process-forwarder-issue-platform --consumer-group post-process-forwarder --synchronize-commit-log-topic=snuba-generic-events-commit-log --synchronize-commit-group generic_events_group
+    command: run consumer --no-strict-offset-reset post-process-forwarder-issue-platform --consumer-group post-process-forwarder --synchronize-commit-log-topic=snuba-generic-events-commit-log --synchronize-commit-group generic_events_group
   subscription-consumer-events:
     <<: *sentry_defaults
     command: run consumer events-subscription-results --consumer-group query-subscription-consumer
@@ -462,6 +468,16 @@ services:
   snuba-generic-metrics-gauges-consumer:
     <<: *snuba_defaults
     command: rust-consumer --storage generic_metrics_gauges_raw --consumer-group snuba-gen-metrics-gauges-consumers --auto-offset-reset=latest --max-batch-time-ms 750 --no-strict-offset-reset
+
++  sentry-loader:
++    <<: *restart_policy
++    image: ghcr.io/aldy505/sentry-loader:edge
++    environment:
++      SENTRY_AUTH_TOKEN: "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"
++      JS_SDK_VERSION: "8.4.0"
++      SENTRY_PUBLIC_HOSTNAME: "sentry.teknologiumum.com"
++      USE_HTTPS: "true"
+
 
 volumes:
   # These store application data that should persist across restarts.
