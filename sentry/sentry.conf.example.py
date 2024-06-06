@@ -339,11 +339,11 @@ SENTRY_FEATURES.update(
             "organizations:performance-transaction-summary-cleanup",
             "organizations:performance-http-view",
             # Show links and upsells to Insights modules
-            "organizations:insights-entry-points": False,
+            "organizations:insights-entry-points",
             # Enable access to initial Insights modules (Queries, Requests, Vitals, App Starts, Page Loads, Resources)
-            "organizations:insights-initial-modules": False,
+            "organizations:insights-initial-modules",
             # Enable access to newer Insights modules (Caches, Queues, LLMs, Mobile UI)
-            "organizations:insights-addon-modules": False,
+            "organizations:insights-addon-modules",
         )
     }
 )
