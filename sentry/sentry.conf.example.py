@@ -296,9 +296,9 @@ SENTRY_FEATURES.update(
             "organizations:indexed-spans-extraction",
             "organizations:insights-entry-points",
             "organizations:insights-initial-modules",
+            "organizations:insights-addon-modules",
             "organizations:mobile-ttid-ttfd-contribution",
             "organizations:performance-calculate-score-relay",
-            "organizations:spans-first-ui",
             "organizations:standalone-span-ingestion",
             "organizations:starfish-browser-resource-module-image-view",
             "organizations:starfish-browser-resource-module-ui",
@@ -308,42 +308,35 @@ SENTRY_FEATURES.update(
             "organizations:starfish-browser-webvitals-use-backend-scores",
             "organizations:starfish-mobile-appstart",
             "projects:span-metrics-extraction",
+            "projects:span-metrics-extraction-addons",
             # Start custom flags here!
-            # DDM
-            # Metrics: Enable ingestion and storage of custom metrics. See custom-metrics for UI.
+            # Metrics
             "organizations:custom-metrics",
-            # Enables experimental WIP custom metrics related features
             "organizations:custom-metrics-experimental",
-            # Enables automatically deriving of code mappings
             "organizations:derive-code-mappings",
+            "organizations:metrics-new-inputs",
+            # Insights
+            "organizations:performance-trace-explorer",
+            "organizations:insights-default-performance-score-profiles",
+            "organizations:insights-browser-webvitals-optional-components",
+            "organizations:insights-browser-webvitals-static-weights",
             # User Feedback
             "organizations:user-feedback-ui",
-            "organizations:user-feedback-ingest",
-            "organizations:issue-platform",
-            "organizations:feedback-ingest",
-            "organizations:feedback-post-process-group",
             "organizations:feedback-visible",
+            "organizations:user-feedback-ingest",
             # Real custom flags
             "organizations:create",
             "organizations:device-classification",
             "organizations:grouping-title-ui",
-            "organizations:grouping-tree-ui",
-            "organizations:streamline-targeting-context",
             "organizations:performance-new-widget-designs",
             "organizations:grouping-stacktrace-ui",
             "organizations:performance-metrics-backed-transaction-summary",
             "organizations:performance-span-histogram-view",
+            "organizations:performance-spans-new-ui",
             "organizations:session-replay-event-linking",
-            "organizations:session-replay-viewed-by-ui",
             "organizations:session-replay-enable-canvas",
             "organizations:performance-transaction-summary-cleanup",
-            "organizations:performance-http-view",
-            # Show links and upsells to Insights modules
-            "organizations:insights-entry-points",
-            # Enable access to initial Insights modules (Queries, Requests, Vitals, App Starts, Page Loads, Resources)
-            "organizations:insights-initial-modules",
-            # Enable access to newer Insights modules (Caches, Queues, LLMs, Mobile UI)
-            "organizations:insights-addon-modules",
+            "organizations:trace-view-v1",
         )
     }
 )

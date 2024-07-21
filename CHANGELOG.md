@@ -1,5 +1,22 @@
 # Changelog
 
+## 24.7.0
+
+### Various fixes & improvements
+
+- Check postgres os before proceeding with install (#3197) by @hubertdeng123
+- Update sentry-admin.sh to select its own working directory (#3184) by @theoriginalgri
+- feat: add insights feature flags (#3152) by @aldy505
+- feat(relay): Forward /api/0/relays/* to inner relays (#3144) by @iambriccardo
+
+## 24.6.0
+
+### Various fixes & improvements
+
+- Use general kafka topic creation in self-hosted (#3121) by @hubertdeng123
+- Use non-alpine postgres (#3116) by @hubertdeng123
+- Bump Python SDK version used in tests (#3108) by @sentrivana
+
 ## 24.5.1
 
 ### Various fixes & improvements
