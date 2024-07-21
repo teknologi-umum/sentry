@@ -337,6 +337,7 @@ SENTRY_FEATURES.update(
             "organizations:session-replay-enable-canvas",
             "organizations:performance-transaction-summary-cleanup",
             "organizations:trace-view-v1",
+            "organizations:js-sdk-loader-v8",
         )
     }
 )
