@@ -292,6 +292,9 @@ SENTRY_FEATURES.update(
             "projects:plugins",
             "projects:rate-limits",
             "projects:servicehooks",
+        )
+        # Starfish related flags
+        + (
             "organizations:deprecate-fid-from-performance-score",
             "organizations:indexed-spans-extraction",
             "organizations:insights-entry-points",
@@ -309,7 +312,18 @@ SENTRY_FEATURES.update(
             "organizations:starfish-mobile-appstart",
             "projects:span-metrics-extraction",
             "projects:span-metrics-extraction-addons",
-            # Start custom flags here!
+        )
+        # User Feedback related flags
+        + (
+            "organizations:user-feedback-ingest",
+            "organizations:user-feedback-replay-clip",
+            "organizations:user-feedback-ui",
+            "organizations:feedback-visible",
+            "organizations:feedback-ingest",
+            "organizations:feedback-post-process-group",
+        )
+        # Start custom flags here!
+        + (
             # Metrics
             "organizations:custom-metrics",
             "organizations:custom-metrics-experimental",
@@ -320,10 +334,6 @@ SENTRY_FEATURES.update(
             "organizations:insights-default-performance-score-profiles",
             "organizations:insights-browser-webvitals-optional-components",
             "organizations:insights-browser-webvitals-static-weights",
-            # User Feedback
-            "organizations:user-feedback-ui",
-            "organizations:feedback-visible",
-            "organizations:user-feedback-ingest",
             # Real custom flags
             "organizations:create",
             "organizations:device-classification",
@@ -339,6 +349,7 @@ SENTRY_FEATURES.update(
             "organizations:trace-view-v1",
             "organizations:js-sdk-loader-v8",
         )
+
     }
 )
 
@@ -390,3 +401,13 @@ CSP_REPORT_ONLY = True
 # https://docs.djangoproject.com/en/4.2/ref/settings/#std-setting-CSRF_TRUSTED_ORIGINS
 
 CSRF_TRUSTED_ORIGINS = ["https://sentry.teknologiumum.com", "http://127.0.0.1:9000"]
+
+#################
+# JS SDK Loader #
+#################
+
+JS_SDK_LOADER_DEFAULT_SDK_URL = "https://browser.sentry-cdn.com/%s/bundle%s.min.js"
+
+
+# If you would like to use self-hosted Sentry with only errors enabled, please set this
+SENTRY_SELF_HOSTED_ERRORS_ONLY = env("COMPOSE_PROFILES") != "feature-complete"
