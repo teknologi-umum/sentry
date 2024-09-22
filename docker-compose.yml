@@ -524,6 +524,30 @@ services:
       - sentry-vroom:/var/lib/sentry-profiles
     profiles:
       - feature-complete
+  uptime-results:
+    <<: *sentry_defaults
+    command: run consumer uptime-results --consumer-group uptime-results
+    profiles:
+      - feature-complete
+  uptime-checker:
+    <<: *restart_policy
+    image: "aldy505/sentry-uptime-checker:latest"
+    command: run --config /config.yml
+    environment:
+     UPTIME_CHECKER_REDIS_HOST: "redis://redis:6379"
+     UPTIME_CHECKER_RESULTS_KAFKA_CLUSTER: "kafka:9092"
+     UPTIME_CHECKER_RESULTS_KAFKA_TOPIC: "uptime-results"
+     UPTIME_CHECKER_CONFIGS_KAFKA_CLUSTER: "kafka:9092"
+     UPTIME_CHECKER_CONFIGS_KAFKA_TOPIC: "uptime-configs"
+     UPTIME_CHECKER_CHECKER_CONCURRENCY: "200"
+     UPTIME_CHECKER_LOG_LEVEL: "error"
+    depends_on:
+      kafka:
+        <<: *depends_on-healthy
+      redis:
+        <<: *depends_on-healthy
+    profiles:
+      - feature-complete
 
 volumes:
   # These store application data that should persist across restarts.

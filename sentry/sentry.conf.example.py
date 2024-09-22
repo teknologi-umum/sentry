@@ -324,16 +324,12 @@ SENTRY_FEATURES.update(
         )
         # Start custom flags here!
         + (
-            # Metrics
-            "organizations:custom-metrics",
-            "organizations:custom-metrics-experimental",
-            "organizations:derive-code-mappings",
-            "organizations:metrics-new-inputs",
             # Insights
             "organizations:performance-trace-explorer",
             "organizations:insights-default-performance-score-profiles",
             "organizations:insights-browser-webvitals-optional-components",
             "organizations:insights-browser-webvitals-static-weights",
+            "organizations:insights-domain-view",
             # Real custom flags
             "organizations:create",
             "organizations:device-classification",
@@ -348,8 +344,21 @@ SENTRY_FEATURES.update(
             "organizations:performance-transaction-summary-cleanup",
             "organizations:trace-view-v1",
             "organizations:js-sdk-loader-v8",
+            "organizations:span-stats",
+            "organizations:issue-details-always-show-trace",
         )
-
+        # Uptime Monitoring related flags
+        + (
+            "organizations:uptime-api-create-update",
+            "organizations:uptime-automatic-hostname-detection",
+            "organizations:uptime-automatic-subscription-creation",
+            "organizations:uptime-rule-api",
+            "organizations:uptime-create-issues",
+            "organizations:uptime-settings",
+            "organizations:uptime-visible", # This is for issues platform
+            "organizations:uptime-ingest",
+            "organizations:uptime-post-process-group",
+        )
     }
 )
 
